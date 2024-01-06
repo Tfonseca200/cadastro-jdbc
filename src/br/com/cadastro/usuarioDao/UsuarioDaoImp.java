@@ -8,11 +8,11 @@ public interface UsuarioDaoImp {
 
     void cadastrar(Usuario usuario);
 
-    List<Usuario> buscarTodos();
+    List<Usuario> Listar();
 
     Usuario buscarPorId(int codigo);
 
     void atualizarCadastro(Usuario usuario);
 
-    void remove (int codigo);
+    void removeUsuario (int codigo);
 }

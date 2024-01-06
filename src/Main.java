@@ -3,7 +3,7 @@ import br.com.cadastro.usuario.Usuario;
 import br.com.cadastro.usuarioDao.UsuarioDao;
 
 import java.sql.Connection;
-
+import java.util.List;
 
 
 public class Main {
@@ -15,12 +15,20 @@ public class Main {
         Usuario usuario = new Usuario();
         UsuarioDao dao = new UsuarioDao();
 
-        usuario.setNome("thiago");
-        usuario.setEmail("thiagoteste@gmail.com");
-        usuario.setSenha("thi123");
-        usuario.setData_cadastro(new java.sql.Date(new java.util.Date().getTime()));
+        List<Usuario> lista = dao.Listar();
 
-        dao.Cadastrar(usuario);
+            for (Usuario dados : lista){
+                System.out.println(
+                        "\nId:" + dados.getId()
+                        +"\nNome: " + dados.getNome()
+                        +"\nEmail:" + dados.getEmail()
+                        +"\nEndereço: " + dados.getEndereco()
+                        +"\nNumero de endereço: " + dados.getNum_endereco()
+                        +"\nData de cadastro: " +dados.getData_cadastro()
+                        +"\n-----------------------------------------------------");
+            }
+
+
 
         }
     }

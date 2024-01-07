@@ -6,13 +6,13 @@ import java.util.List;
 
 public interface UsuarioDaoImp {
 
-    void cadastrar(Usuario usuario);
+    void Cadastrar(Usuario usuario);
 
-    List<Usuario> Listar();
+    List<Usuario> ListarUsuarios();
 
-    Usuario buscarPorId(int codigo);
+    void AtualizarCadastro(Usuario usuario);
 
-    void atualizarCadastro(Usuario usuario);
+    Usuario BuscarPorId(int codigo);
 
-    void removeUsuario (int codigo);
+    void RemoverUsuario(int codigoDelete);
 }

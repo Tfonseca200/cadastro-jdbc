@@ -4,6 +4,7 @@ import br.com.cadastro.usuarioDao.UsuarioDao;
 
 import java.sql.Connection;
 import java.util.List;
+import java.util.Date;
 
 
 public class Main {
@@ -15,19 +16,8 @@ public class Main {
         Usuario usuario = new Usuario();
         UsuarioDao dao = new UsuarioDao();
 
-        List<Usuario> lista = dao.Listar();
 
-            for (Usuario dados : lista){
-                System.out.println(
-                        "\nId:" + dados.getId()
-                        +"\nNome: " + dados.getNome()
-                        +"\nEmail:" + dados.getEmail()
-                        +"\nEndereço: " + dados.getEndereco()
-                        +"\nNumero de endereço: " + dados.getNum_endereco()
-                        +"\nData de cadastro: " +dados.getData_cadastro()
-                        +"\n-----------------------------------------------------");
-            }
-
+        dao.RemoverUsuario(3);
 
 
         }

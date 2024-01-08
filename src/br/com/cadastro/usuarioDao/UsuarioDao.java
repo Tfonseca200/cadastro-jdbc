@@ -125,21 +125,27 @@ public class UsuarioDao implements UsuarioDaoImp {
             String sql = "UPDATE CAD_USUARIO SET NOME = ?, EMAIL = ?, ENDERECO = ?, NUM_ENDERECO = ? , DATA_CADASTRO = ? WHERE ID_USUARIO = ?";
             stmt = conexao.prepareStatement(sql);
 
-            stmt.setString(1,usuario.getNome());
-            stmt.setString(2, usuario.getEmail());
-            stmt.setString(3,usuario.getEndereco());
-            stmt.setInt(4,usuario.getNum_endereco());
-            java.sql.Date data = new java.sql.Date(usuario.getData_cadastro().getTime());
-            stmt.setDate(5, data);
+
+             stmt.setString(1, usuario.getNome());
+             stmt.setString(2, usuario.getEmail());
+             stmt.setString(3, usuario.getEndereco());
+             stmt.setInt(4, usuario.getNum_endereco());
+             java.sql.Date data = new java.sql.Date(usuario.getData_cadastro().getTime());
+             stmt.setDate(5, data);
 
              stmt.setInt(6,usuario.getId());
 
              stmt.executeUpdate();
 
 
-            }catch (SQLException e ){
-                e.printStackTrace();
+                 System.out.println("Cadastro alterado com sucesso!");
 
+
+
+
+
+            }catch (SQLException e ) {
+                e.printStackTrace();
 
             }finally {
                 try {
@@ -164,31 +170,40 @@ public class UsuarioDao implements UsuarioDaoImp {
             conexao = Conexao.getConexao();
 
             //Buscado o Id do usuario no banco de dados
-            String sql = "SELECT * FROM CAD_USUARIO WHERE ID_USUARIO = ?";
-            stmt.setInt(1, codigoBusca);
+            String sql = "SELECT * FROM CAD_USUARIO WHERE ID_USUARIO= ?";
             stmt = conexao.prepareStatement(sql);
+            stmt.setInt(1, codigoBusca);
             rs = stmt.executeQuery();
+
 
             //Fazendo o loop pra encontrar o usuario correspodente do Id
             while (rs.next()){
 
-                int id = rs.getInt("ID_CADASTRO");
+                int id = rs.getInt("ID_USUARIO");
                 String nome =  rs.getString("NOME");
-                String email = rs.getString("email");
+                String email = rs.getString("EMAIL");
                 String endereco = rs.getString("ENDERECO");
                 int num_endereco = rs.getInt("NUM_ENDERECO");
                 java.sql.Date data = rs.getDate("DATA_CADASTRO");
 
                 usuario = new Usuario(id, nome , email , endereco , num_endereco, data );
 
-                //Printando dados encontrado do usuário do Id
-                System.out.println("\nId: " + id
-                                    +"\nNome: " + nome
-                                    +"\nEmail: " + email
-                                    +"\nEndereco: " + endereco
-                                    +"\nNumero da residência: " + num_endereco
-                                    +"\nData de cadastro: " + data);
+
+                    //Printando dados encontrado do usuário do Id
+                    System.out.println("\nId: " + id
+                            + "\nNome: " + nome
+                            + "\nEmail: " + email
+                            + "\nEndereco: " + endereco
+                            + "\nNumero da residência: " + num_endereco
+                            + "\nData de cadastro: " + data);
+
+
             }
+
+                //Se o usuario não tive no banco de dados, essa mensagem sera enviado pro terminal
+                if (usuario == null){
+                   System.out.println("Usuario não cadastrado!");
+                }
 
 
             }catch (SQLException e){
@@ -196,7 +211,9 @@ public class UsuarioDao implements UsuarioDaoImp {
 
 
             }finally{
+
                 try{
+
                     stmt.close();
                     rs.close();
                     conexao.close();
@@ -227,7 +244,7 @@ public class UsuarioDao implements UsuarioDaoImp {
             stmt.setInt(1,codigoDelete);
             stmt.executeUpdate();
 
-            System.out.println("CADASTRO DELETADO COM SUCESSO");
+            System.out.println("Cadastro deletado com sucesso");
 
 
             }catch (SQLException e){

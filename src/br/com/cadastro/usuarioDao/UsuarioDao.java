@@ -13,7 +13,9 @@ import java.util.List;
 
 public class UsuarioDao implements UsuarioDaoImp {
 
-    private Connection conexao;
+    private  Connection conexao = null;
+
+
 
     public void Cadastrar(Usuario usuario){
 
@@ -50,7 +52,7 @@ public class UsuarioDao implements UsuarioDaoImp {
 
             try{
                 stmt.close();
-                conexao.close();
+                Conexao.fecharConexao(conexao);
 
             }catch (SQLException e){
                 e.printStackTrace();
@@ -100,7 +102,8 @@ public class UsuarioDao implements UsuarioDaoImp {
                 try {
                     stmt.close();
                     rs.close();
-                    conexao.close();
+                    Conexao.fecharConexao(conexao);
+
 
             }catch (SQLException e){
                 e.printStackTrace();
@@ -150,7 +153,7 @@ public class UsuarioDao implements UsuarioDaoImp {
             }finally {
                 try {
                     stmt.close();
-                    conexao.close();
+                    Conexao.fecharConexao(conexao);
 
                 }catch (SQLException e){
                     e.printStackTrace();
@@ -165,45 +168,50 @@ public class UsuarioDao implements UsuarioDaoImp {
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
+
         try{
+
+
 
             conexao = Conexao.getConexao();
 
             //Buscado o Id do usuario no banco de dados
-            String sql = "SELECT * FROM CAD_USUARIO WHERE ID_USUARIO= ?";
+            String sql = "SELECT * FROM CAD_USUARIO WHERE ID_USUARIO = ?";
             stmt = conexao.prepareStatement(sql);
             stmt.setInt(1, codigoBusca);
             rs = stmt.executeQuery();
 
 
+
             //Fazendo o loop pra encontrar o usuario correspodente do Id
-            while (rs.next()){
+            while (rs.next()) {
 
                 int id = rs.getInt("ID_USUARIO");
-                String nome =  rs.getString("NOME");
+                String nome = rs.getString("NOME");
                 String email = rs.getString("EMAIL");
                 String endereco = rs.getString("ENDERECO");
                 int num_endereco = rs.getInt("NUM_ENDERECO");
                 java.sql.Date data = rs.getDate("DATA_CADASTRO");
 
-                usuario = new Usuario(id, nome , email , endereco , num_endereco, data );
+                usuario = new Usuario(id, nome, email, endereco, num_endereco, data);
 
 
-                    //Printando dados encontrado do usuário do Id
-                    System.out.println("\nId: " + id
-                            + "\nNome: " + nome
-                            + "\nEmail: " + email
-                            + "\nEndereco: " + endereco
-                            + "\nNumero da residência: " + num_endereco
-                            + "\nData de cadastro: " + data);
+                //Printando dados encontrado do usuário do Id
+                System.out.println("\nId: " + id
+                        + "\nNome: " + nome
+                        + "\nEmail: " + email
+                        + "\nEndereco: " + endereco
+                        + "\nNumero da residência: " + num_endereco
+                        + "\nData de cadastro: " + data
+                        + "\n");
+                }
 
-
-            }
 
                 //Se o usuario não tive no banco de dados, essa mensagem sera enviado pro terminal
                 if (usuario == null){
                    System.out.println("Usuario não cadastrado!");
                 }
+
 
 
             }catch (SQLException e){
@@ -216,7 +224,7 @@ public class UsuarioDao implements UsuarioDaoImp {
 
                     stmt.close();
                     rs.close();
-                    conexao.close();
+                    Conexao.fecharConexao(conexao);
 
             }catch (SQLException e ){
                 e.printStackTrace();
@@ -254,7 +262,7 @@ public class UsuarioDao implements UsuarioDaoImp {
             }finally {
                 try{
                     stmt.close();
-                    conexao.close();
+                    Conexao.fecharConexao(conexao);
 
             }catch (SQLException e){
                 e.printStackTrace();

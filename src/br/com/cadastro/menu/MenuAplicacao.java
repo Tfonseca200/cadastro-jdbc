@@ -19,16 +19,27 @@ public class MenuAplicacao {
         Usuario usuario = new Usuario();
         UsuarioDao dao = new UsuarioDao();
         int opcao = 0;
+        boolean repeticao = true;
 
-        System.out.println(   "1 - Cadastrar usuario " +
+
+        while(repeticao){
+
+        System.out.println( "=================MENU DE CADASTRO======================="+
+                            "\n1 - Cadastrar usuario " +
                             "\n2 - Listar Usuario " +
                             "\n3 - Atualizar cadastro " +
                             "\n4 - Buscar usuario por Id " +
                             "\n5 - Remover cadastro do usuario " +
-                            "\n0 - Sair do sistema ");
+                            "\n0 - Sair do sistema " +
+                         "\n========================================================");
+
+                            System.out.print("Digite a opção por favor: ");
+
         try {
             opcao = imput.nextInt();
             imput.nextLine();
+
+            System.out.println( "\n========================================================");
 
         }catch (InputMismatchException e){
             System.err.println("Escolha uma opção valida por favor!");
@@ -79,13 +90,14 @@ public class MenuAplicacao {
 
                     for (Usuario dados: lista){
                         System.out.println(
-                                          "\nId:" + dados.getId()
+                                        "=======================Usuario=============================="
+                                        +"\nId:" + dados.getId()
                                         +"\nNome: " + dados.getNome()
                                         +"\nEmail:" + dados.getEmail()
                                         +"\nEndereço: " + dados.getEndereco()
                                         +"\nNumero de endereço: " + dados.getNum_endereco()
                                         +"\nData de cadastro: " +dados.getData_cadastro()
-                                        +"\n-----------------------------------------------------");
+                                        +"\n========================================================\n");
 
 
                     }
@@ -128,6 +140,7 @@ public class MenuAplicacao {
 
                     break;
 
+
                 case 4:
 
                     System.out.println("Digite o Id do usuario pra visualizar dados de cadastro: ");
@@ -142,6 +155,7 @@ public class MenuAplicacao {
                     }
 
                     break;
+
 
                case 5:
 
@@ -159,13 +173,21 @@ public class MenuAplicacao {
                    break;
 
 
+              case 0:
+                  System.out.println("Sistema encerrado!");
+                  repeticao = false;
+                 break;
 
 
+               default:
+                   System.out.println("Opção invalida!");
 
+                    break;
 
 
 
             }
         }
     }
+}
 

@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.InputMismatchException;
 
 
 public class UsuarioDao implements UsuarioDaoImp {
@@ -250,7 +251,7 @@ public class UsuarioDao implements UsuarioDaoImp {
             }
 
 
-        }catch (SQLException e ){
+        }catch (SQLException e ) {
             e.printStackTrace();
 
 

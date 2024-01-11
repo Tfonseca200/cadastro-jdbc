@@ -42,7 +42,7 @@ public class MenuAplicacao {
             System.out.println( "\n========================================================");
 
         }catch (InputMismatchException e){
-            System.err.println("Escolha uma opção valida por favor!");
+            System.err.println("Escolha uma opção valida por favor!\n");
         }
 
 
@@ -57,32 +57,38 @@ public class MenuAplicacao {
                     System.out.println("Digite o nome: ");
                     String nome = imput.nextLine();
 
+
                     System.out.println("Digite o email: ");
                     String email = imput.nextLine();
 
-                    System.out.println("Digite o endereço: ");
+
+                    System.out.println("Digite o endereço: (Sem o numero da resídencia)");
                     String endereco = imput.nextLine();
 
-                    System.out.println("Digite o Numero de endereço: ");
+
+                    System.out.println("Digite o Numero do endereço");
                     int num_endereco = imput.nextInt();
 
 
-                    usuario.setNome(nome);
-                    usuario.setEmail(email);
-                    usuario.setEndereco(endereco);
-                    usuario.setNum_endereco(num_endereco);
-                    usuario.setData_cadastro(new java.sql.Date(new java.util.Date().getTime()));
 
 
+                        usuario.setNome(nome);
+                        usuario.setEmail(email);
+                        usuario.setEndereco(endereco);
+                        usuario.setNum_endereco(num_endereco);
+                        usuario.setData_cadastro(new java.sql.Date(new java.util.Date().getTime()));
 
-                    dao.Cadastrar(usuario);
-                    System.out.println("Cadastro concluido!");
+
+                        dao.Cadastrar(usuario);
+                        System.out.println("Cadastro concluido!");
+
+
 
                 }catch (InputMismatchException e){
-                    System.err.println("Dados de cadastro incorretos, por favor tente novamente ");
-                    e.getMessage();
+                    System.err.print("Dados de cadastro incorretos, por favor tente novamente \n");
 
-
+                }finally {
+                    imput.nextLine();
                 }
                 break;
 
@@ -116,7 +122,7 @@ public class MenuAplicacao {
                         imput.nextLine();
 
                         //Usando o método verificar id, se retornar true é porque tem id do usúario
-                        if (dao.verificarId(id) != false){
+                        if (dao.verificarId(id)){
 
                             System.out.println("Digite o nome: ");
                             String nome = imput.nextLine();
@@ -146,12 +152,14 @@ public class MenuAplicacao {
 
 
 
-                    }catch (InputMismatchException e) {
-                        System.err.println("Dados de cadastro incorretos, por favor tente novamente ");
-                        e.getMessage();
+                    }catch (InputMismatchException e){
+                        System.err.print("Dados de cadastro incorretos, por favor tente novamente \n");
+
+                    }finally {
+                        imput.nextLine();
                     }
 
-                    break;
+                     break;
 
 
                 case 4:
@@ -162,7 +170,7 @@ public class MenuAplicacao {
                         int id = imput.nextInt();
 
                         //Usando o método verificar id, se retornar true é porque tem id do usúario
-                        if (dao.verificarId(id) != false){
+                        if (dao.verificarId(id)){
                             dao.BuscarPorId(id);
                         }else{
                             System.out.println("Usuario não cadastrado!");
@@ -185,7 +193,7 @@ public class MenuAplicacao {
                        int id = imput.nextInt();
 
                        //Usando o método verificar id, se retornar true é porque tem id do usúario
-                       if (dao.verificarId(id) != false){
+                       if (dao.verificarId(id)){
                            dao.RemoverUsuario(id);
                             System.out.println("Usuario deletado com sucesso!");
 

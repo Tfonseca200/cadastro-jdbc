@@ -8,11 +8,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CadastroUsuario/br/com/cadastro/menu/MenuAplicacao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CadastroUsuario/br/com/cadastro/menu/MenuAplicacao.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CadastroUsuario/br/com/cadastro/usuarioDao/UsuarioDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CadastroUsuario/br/com/cadastro/usuarioDao/UsuarioDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CadastroUsuario/br/com/cadastro/usuarioDao/UsuarioDaoImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CadastroUsuario/br/com/cadastro/usuarioDao/UsuarioDaoImp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/com/cadastro/connection/Conexao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/com/cadastro/connection/Conexao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/br/com/cadastro/menu/MenuAplicacao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/com/cadastro/menu/MenuAplicacao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/br/com/cadastro/usuarioDao/UsuarioDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/com/cadastro/usuarioDao/UsuarioDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/com/cadastro/usuarioDao/UsuarioDaoImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/com/cadastro/usuarioDao/UsuarioDaoImp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

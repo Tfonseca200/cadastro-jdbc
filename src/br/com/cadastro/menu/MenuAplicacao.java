@@ -19,10 +19,10 @@ public class MenuAplicacao {
         Usuario usuario = new Usuario();
         UsuarioDao dao = new UsuarioDao();
         int opcao = 0;
-        boolean repeticao = true;
+        boolean repeticaoDoMenu = true;
 
 
-        while(repeticao){
+        while(repeticaoDoMenu){
 
         System.out.println( "=================MENU DE CADASTRO======================="+
                             "\n1 - Cadastrar usuario " +
@@ -73,7 +73,10 @@ public class MenuAplicacao {
                     usuario.setNum_endereco(num_endereco);
                     usuario.setData_cadastro(new java.sql.Date(new java.util.Date().getTime()));
 
+
+
                     dao.Cadastrar(usuario);
+                    System.out.println("Cadastro concluido!");
 
                 }catch (InputMismatchException e){
                     System.err.println("Dados de cadastro incorretos, por favor tente novamente ");
@@ -112,26 +115,36 @@ public class MenuAplicacao {
                         int id = imput.nextInt();
                         imput.nextLine();
 
-                        System.out.println("Digite o nome: ");
-                        String nome = imput.nextLine();
+                        //Usando o método verificar id, se retornar true é porque tem id do usúario
+                        if (dao.verificarId(id) != false){
 
-                        System.out.println("Digite o email: ");
-                        String email = imput.nextLine();
+                            System.out.println("Digite o nome: ");
+                            String nome = imput.nextLine();
 
-                        System.out.println("Digite o endereço: ");
-                        String endereco = imput.nextLine();
+                            System.out.println("Digite o email: ");
+                            String email = imput.nextLine();
 
-                        System.out.println("Digite o Numero de endereço: ");
-                        int num_endereco = imput.nextInt();
+                            System.out.println("Digite o endereço: ");
+                            String endereco = imput.nextLine();
 
-                        usuario.setNome(nome);
-                        usuario.setEmail(email);
-                        usuario.setEndereco(endereco);
-                        usuario.setNum_endereco(num_endereco);
-                        usuario.setData_cadastro(new java.sql.Date(new java.util.Date().getTime()));
-                        usuario.setId(id);
+                            System.out.println("Digite o Numero de endereço: ");
+                            int num_endereco = imput.nextInt();
+
+                            usuario.setNome(nome);
+                            usuario.setEmail(email);
+                            usuario.setEndereco(endereco);
+                            usuario.setNum_endereco(num_endereco);
+                            usuario.setData_cadastro(new java.sql.Date(new java.util.Date().getTime()));
+                            usuario.setId(id);
 
                         dao.AtualizarCadastro(usuario);
+                        System.out.println("Usuario atualizado com sucesso!");
+
+                        }else{
+                            System.out.println("Usuario não cadastrado!");
+                        }
+
+
 
                     }catch (InputMismatchException e) {
                         System.err.println("Dados de cadastro incorretos, por favor tente novamente ");
@@ -147,7 +160,14 @@ public class MenuAplicacao {
 
                     try {
                         int id = imput.nextInt();
-                        dao.BuscarPorId(id);
+
+                        //Usando o método verificar id, se retornar true é porque tem id do usúario
+                        if (dao.verificarId(id) != false){
+                            dao.BuscarPorId(id);
+                        }else{
+                            System.out.println("Usuario não cadastrado!");
+                        }
+
 
                     }catch ( InputMismatchException e){
                         System.err.println("Id invalido!");
@@ -163,7 +183,17 @@ public class MenuAplicacao {
 
                    try {
                        int id = imput.nextInt();
-                       dao.RemoverUsuario(id);
+
+                       //Usando o método verificar id, se retornar true é porque tem id do usúario
+                       if (dao.verificarId(id) != false){
+                           dao.RemoverUsuario(id);
+                            System.out.println("Usuario deletado com sucesso!");
+
+                       }else{
+                           System.out.println("Usuario não cadastrado!");
+                       }
+
+
 
                    }catch ( InputMismatchException e){
                        System.err.println("Id invalido!");
@@ -175,7 +205,7 @@ public class MenuAplicacao {
 
               case 0:
                   System.out.println("Sistema encerrado!");
-                  repeticao = false;
+                  repeticaoDoMenu = false;
                  break;
 
 

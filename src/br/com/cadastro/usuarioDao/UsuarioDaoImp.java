@@ -14,5 +14,7 @@ public interface UsuarioDaoImp {
 
     Usuario BuscarPorId(int codigo);
 
+    boolean verificarId(int verificaId);
+
     void RemoverUsuario(int codigoDelete);
 }

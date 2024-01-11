@@ -42,7 +42,6 @@ public class UsuarioDao implements UsuarioDaoImp {
             //Executando sql
             stmt.executeUpdate();
 
-            System.out.println("Cadastrado com sucesso");
 
 
         }catch (SQLException e){
@@ -141,11 +140,6 @@ public class UsuarioDao implements UsuarioDaoImp {
              stmt.executeUpdate();
 
 
-                 System.out.println("Cadastro alterado com sucesso!");
-
-
-
-
 
             }catch (SQLException e ) {
                 e.printStackTrace();
@@ -207,12 +201,6 @@ public class UsuarioDao implements UsuarioDaoImp {
                 }
 
 
-                //Se o usuario não tive no banco de dados, essa mensagem sera enviado pro terminal
-                if (usuario == null){
-                   System.out.println("Usuario não cadastrado!");
-                }
-
-
 
             }catch (SQLException e){
                 e.printStackTrace();
@@ -236,9 +224,58 @@ public class UsuarioDao implements UsuarioDaoImp {
 
 
 
+    public boolean verificarId(int verificaId){
+
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+
+        try {
+
+            conexao = Conexao.getConexao();
+
+            // contando resgistro com count, verificando se o id existi na tabela
+            // Se existir vai retornar true, se não vai retorna false
+
+            String sql = "SELECT COUNT(DISTINCT ID_USUARIO) FROM CAD_USUARIO WHERE ID_USUARIO = ?;";
+            stmt = conexao.prepareStatement(sql);
+            stmt.setInt(1,verificaId);
+            rs = stmt.executeQuery();
+
+
+            if(rs.next()) {
+                //Pegando registro do count
+                int count = rs.getInt(1);
+                    return count != 0;
+            }
+
+
+        }catch (SQLException e ){
+            e.printStackTrace();
+
+
+        }finally {
+
+            try {
+                stmt.close();
+                rs.close();
+                Conexao.fecharConexao(conexao);
+
+            }catch (SQLException e){
+                e.printStackTrace();
+            }
+        }
+
+        return false;
+
+    }
+
+
+
     public void RemoverUsuario(int codigoDelete){
 
         PreparedStatement stmt = null ;
+
 
         try{
 
@@ -251,8 +288,6 @@ public class UsuarioDao implements UsuarioDaoImp {
             stmt = conexao.prepareStatement(sql);
             stmt.setInt(1,codigoDelete);
             stmt.executeUpdate();
-
-            System.out.println("Cadastro deletado com sucesso");
 
 
             }catch (SQLException e){

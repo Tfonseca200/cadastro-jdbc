@@ -35,7 +35,6 @@
          if(conexao != null){
             try{
                conexao.close();
-               System.out.println("Conexão fechada");
 
             }catch(SQLException e ){
                e.printStackTrace();

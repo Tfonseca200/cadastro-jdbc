@@ -21,7 +21,5 @@ A aplicação consiste em um menu de opções com funcionalidades e validações
 
 Thiago Fonseca Claudino
 
-
-
-
+Linkedin: https://www.linkedin.com/in/thiago-fonseca-a58706248/
 

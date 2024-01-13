@@ -5,7 +5,7 @@
 
 É um sistema de um crud de cadastro, desenvolvindo pra coleta de informaçãos de dados do usuário.
 
-O projeto foi desenvolvindo no curso de Java Fundamentos pela Fiap (NANO COURSES), passaram a base da implementação mais a parte da classe de menu e as regras e método de validação foi desenvolvinda com base em conhecimentos🌐
+O projeto foi desenvolvindo no curso de Java Fundamentos pela Fiap (NANO COURSES), passaram a base da implementação mais a parte da classe de menu e as regras e método de validação foi desenvolvinda com base em meus conhecimentos🌐
 
 A aplicação consiste em um menu de opções com funcionalidades e validações, permitindo cadastrar, listar, atualizar , deletar e buscar usuário.
 

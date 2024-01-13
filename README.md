@@ -18,6 +18,7 @@ A aplicação consiste em um menu de opções com funcionalidades e validações
 ## Competencias
 - Orientação a objeto
 - Padrão DAO (Data Access Object)
+- padrão DaoFactory
 
 # Autor
 

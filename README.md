@@ -7,7 +7,7 @@
 
 O projeto foi desenvolvindo no curso de Java Fundamentos pela Fiap (NANO COURSES), passaram a base da implementação mais a parte da classe de menu e as regras e método de validação foi desenvolvinda com base em meus conhecimentos🌐
 
-A aplicação consiste em um menu de opções com funcionalidades e validações, permitindo cadastrar, listar, atualizar , deletar e buscar usuário.
+A aplicação roda em um terminal e consiste em um menu de opções com funcionalidades e validações, permitindo cadastrar, listar, atualizar , deletar e buscar usuário.
 
 # Tecnologias utilizadas
 ## Back end

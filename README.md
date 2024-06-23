@@ -24,5 +24,5 @@ A aplicação roda em um terminal e consiste em um menu de opções com funciona
 
 Thiago Fonseca Claudino
 
-Linkedin: https://www.linkedin.com/in/thiago-fonseca-a58706248/
+Linkedin: https://www.linkedin.com/in/thiago-fonseca-tech/
 
